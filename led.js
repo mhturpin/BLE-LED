@@ -35,10 +35,19 @@ function connect() {
         })
         .then(service => {
             console.log('Getting Characteristic...');
-            service.getCharacteristic('0000ffe1-0000-1000-8000-00805f9b34fb')
-            .then(characteristic => {
-                ledWrite = characteristic
-            })
+            return Promise.all([
+                service.getCharacteristic('0000ffe1-0000-1000-8000-00805f9b34fb')
+            ]);
+        })
+        .then(characteristic => {
+            [ledWrite] = characteristic;
+            return ledWrite.startNotifications().then(_ => {
+                console.log('> Notifications started');
+                ledWrite.addEventListener('characteristicvaluechanged',
+                                                handleNotifications);
+            });
+        })
+        .then(() => {
             console.log('All ready!');
             onConnected();
         })
@@ -47,6 +56,7 @@ function connect() {
         });
 }
 
+// Sends data to device
 function sendData(val) {
     if (val < 0) {
         val = $('#data_field').val();
@@ -56,4 +66,10 @@ function sendData(val) {
     let data = new Uint8Array([val]);
     return ledWrite.writeValue(data)
         .catch(err => console.log('Error when sending status packet! ', err))
+}
+
+// Print notification to console if received
+function handleNotifications(event) {
+    let value = event.target.value;
+    console.log('> ' + value);
 }

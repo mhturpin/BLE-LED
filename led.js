@@ -70,6 +70,13 @@ function sendData(val) {
 
 // Print notification to console if received
 function handleNotifications(event) {
-    let value = event.target.value;
-    console.log('> ' + value);
+      let value = event.target.value;
+      let a = [];
+      // Convert raw data bytes to hex values just for the sake of showing something.
+      // In the "real" world, you'd use data.getUint8, data.getUint16 or even
+      // TextDecoder to process raw data bytes.
+      for (let i = 0; i < value.byteLength; i++) {
+          a.push(value.getUint8(i).toString(16).slice(-2));
+      }
+      console.log('> 0x' + a.join(''));
 }

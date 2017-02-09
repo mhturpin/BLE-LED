@@ -38,8 +38,11 @@ function connect() {
         });
 }
 
-function sendData() {
-    let val = $('#data_field').val();
+function sendData(val) {
+    if (val < 0) {
+        val = $('#data_field').val();
+    }
+
     console.log('Sending status packet (' + val + ')...');
     let data = new Uint8Array([val]);
     return ledWrite.writeValue(data)

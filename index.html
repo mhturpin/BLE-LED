@@ -27,8 +27,11 @@
             </button>
 
             <div class="user_data hidden">
-                Send data: <input type="text" name="data" id="data_field"><br>
-                <input type="submit" value="Submit" onclick="sendData()">
+                Send data: <input type="text" name="data" id="data_field">
+                <input type="submit" value="Submit" onclick="sendData(-1)"><br>
+                <input type="submit" value="Power" onclick="sendData(1)"><br>
+                <input type="submit" value="Vol Up" onclick="sendData(2)"><br>
+                <input type="submit" value="Vol Down" onclick="sendData(3)">
             </div>
 
 

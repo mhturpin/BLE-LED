@@ -2,6 +2,15 @@
 
 let ledWrite = null;
 
+// Bind function to text box so that it runs when enter key is pressed
+$(document).ready(function(){
+    $('#data_field').keypress(function(e){
+        if(e.keyCode == 13 || e.which == 13) {
+            sendData(-1);
+        }
+    });
+});
+
 // Hide connect button and show text box once connected
 function onConnected() {
     document.querySelector('.connect-button').classList.add('hidden');

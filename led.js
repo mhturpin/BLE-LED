@@ -12,7 +12,8 @@ function onConnected() {
 function connect() {
     console.log('Requesting Bluetooth Device...');
     navigator.bluetooth.requestDevice({
-            filters: [{ name: 'MLT-BT05'}]
+            filters: [{ name: 'MLT-BT05'}],
+            optionalServices: ['0000ffe0-0000-1000-8000-00805f9b34fb']
         })
         .then(device => {
             console.log('> Found ' + device.name);

@@ -42,6 +42,6 @@ function sendData() {
     let val = $('#data_field').val();
     console.log('Sending status packet (' + val + ')...');
     let data = new Uint8Array([val]);
-    return ballWrite.writeValue(data)
+    return ledWrite.writeValue(data)
         .catch(err => console.log('Error when sending status packet! ', err))
 }

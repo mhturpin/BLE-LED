@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BLE LED Light</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Origin Trial Token, feature = Web Bluetooth, origin = https://mhturpin.github.io, expires = 2017-01-24 -->
+        <meta http-equiv="origin-trial" data-feature="Web Bluetooth" data-expires="2017-01-24" content="AtwGCodQbv3PW0UW+vlJ6t+ZIAApAO7k197G/Skjbl9RtQHjK0RTpRRz9U0kK9RNL1XZ2Whp8IxCXwydJXcbQw4AAABYeyJvcmlnaW4iOiJodHRwczovL21odHVycGluLmdpdGh1Yi5pbzo0NDMiLCJmZWF0dXJlIjoiV2ViQmx1ZXRvb3RoIiwiZXhwaXJ5IjoxNDg1Mjc0MDIwfQ==">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+        <link rel="stylesheet" href="styles.css" />
+
+        <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="app-layout mdl-layout mdl-js-layout">
+
+        <main class="mdl-layout__content">
+
+            <h3>LED Light</h3>
+
+            <button onclick="connect()" class="connect-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                <i class="material-icons">bluetooth</i> Connect
+            </button>
+
+            <div class="user_data hidden">
+                Send data: <input type="text" name="data" id="data_field"><br>
+                <input type="submit" value="Submit" onclick="sendData()">
+            </div>
+
+
+        </main>
+    </div>
+
+    <script src="led.js"></script>
+    </body>
+</html>
